@@ -428,13 +428,14 @@ body {
 /* ========== MEMORY GAME ========== */
 .memory-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.8rem;
-    max-width: 400px;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonne fisse su desktop */
+    gap: 0.8rem; /* Usa il gap originale */
+    max-width: 400px; /* O un valore che si adatti meglio al tuo layout */
     margin: 0 auto;
 }
 
 .memory-card {
+    /* Rimuovi width e height fisse per permettere ad aspect-ratio di funzionare dinamicamente */
     /* width: 80px; */
     /* height: 80px; */
     background: linear-gradient(135deg, #800020 0%, #a8324a 100%);
@@ -449,7 +450,15 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
     color: transparent;
+
+    /* Aggiungi aspect-ratio per garantire il quadrato */
+    aspect-ratio: 1 / 1;
+    /* Potrebbe essere necessario specificare un width, ad esempio 100% del contenitore grid */
+    width: 100%;
+    /* Assicurati che padding e bordo siano inclusi nel calcolo della dimensione */
+    box-sizing: border-box;
 }
+
 .memory-card:hover:not(.matched) {
     transform: translateY(-5px);
     box-shadow: 0 6px 16px rgba(128, 0, 32, 0.5);
@@ -470,27 +479,10 @@ body {
     transform: scale(0.95);
 }
 
-
 /* ========== MEMORY GAME - MOBILE FIX ========== */
-/* Rimuovi il !important se non è strettamente necessario, per ora lo teniamo per sicurezza */
 @media (max-width: 768px) {
-    /* ... altre regole per header, nav, ecc. ... */
-
-    /* Forza esplicitamente 4 colonne */
     .memory-grid {
         grid-template-columns: repeat(4, 1fr) !important; /* Usa !important per forzare */
-        gap: 0.5rem !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        margin: 0 auto !important;
-    }
-
-    /* ========== MEMORY GAME - MOBILE FIX ========== */
-@media (max-width: 768px) {
-    /* ... altre regole per header, nav, ecc. ... */
-
-    .memory-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
         gap: 0.5rem !important;
         width: 100% !important;
         max-width: 400px !important; /* Potresti voler aumentare questo valore per sfruttare meglio lo schermo */
@@ -498,22 +490,20 @@ body {
     }
 
     .memory-card {
-        /* Rimuovi l'altezza fissa */
-        /* height: 70px !important; */
-        width: 100% !important;
-        /* Usa aspect-ratio per creare un quadrato */
-        aspect-ratio: 1 / 1 !important;
+        /* width: 100% è già impostato sopra, quindi non serve ripeterlo */
+        /* height: 70px !important; */ /* Rimossa altezza fissa */
+        /* Usa aspect-ratio come sopra */
+        /* aspect-ratio: 1 / 1 è già impostato sopra */
         /* Mantieni il centramento */
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        /* display: flex !important; */ /* Già impostato sopra */
+        /* align-items: center !important; */ /* Già impostato sopra */
+        /* justify-content: center !important; */ /* Già impostato sopra */
         font-size: 2.2rem !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        /* padding: 0 !important; */ /* Già gestito da box-sizing sopra */
+        /* margin: 0 !important; */ /* Già gestito da margin sopra */
         /* Assicurati che il bordo rientri nei limiti definiti */
-        box-sizing: border-box !important;
+        /* box-sizing: border-box !important; */ /* Già impostato sopra */
     }
-}
 }
 
 /* Aggiungi una media query per schermi molto piccoli (es. < 480px) */
@@ -523,22 +513,10 @@ body {
         gap: 0.4rem !important; /* Leggermente meno spazio */
     }
     .memory-card {
-        height: 60px !important; /* Leggermente più piccole */
+        /* height: 60px !important; */ /* Rimossa altezza fissa per mantenere aspect-ratio */
         font-size: 1.8rem !important;
-    }
-}
-
-/* Aggiungi una media query per schermi desktop grandi */
-@media (min-width: 769px) {
-    .memory-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 colonne fisse su desktop */
-        gap: 0.8rem; /* Usa il gap originale */
-    }
-    .memory-card {
-        /* Puoi rimettere dimensioni fisse se vuoi */
-        width: 80px; /* O rimuovere se usi flexbox per la dimensione */
-        height: 80px;
-        font-size: 2rem;
+        /* aspect-ratio: 1 / 1 è già applicato */
+        /* width: 100% è già applicato */
     }
 }
 
