@@ -270,6 +270,23 @@ body {
     }
 }
 
+/* --- CORREZIONI PER MOBILE: CRUCIVERBA --- */
+@media (max-width: 768px) {
+    /* Rende le celle del cruciverba più grandi e toccabili */
+    .crossword-cell {
+        width: 50px !important;  /* Aumenta la larghezza */
+        height: 50px !important; /* Aumenta l'altezza */
+        font-size: 2rem !important; /* Aumenta la dimensione del testo */
+        margin: 3px !important; /* Aumenta lo spazio tra le celle */
+    }
+    /* Opzionale: Se le celle sono in una griglia flessibile, potresti dover forzare il layout */
+    .crossword-grid {
+         /* Se non è già presente, assicurati che la griglia si adatti */
+         display: grid; 
+         gap: 3px; /* Usa lo stesso valore del margin delle celle */
+    }
+}
+
 /* ========== TRUE/FALSE ========== */
 .question-display {
     background: white;
@@ -439,6 +456,22 @@ body {
 
     .memory-grid {
         gap: 0.6rem;
+    }
+}
+
+/* --- PER IL MEMORY GAME (in CSS.css) --- */
+@media (max-width: 768px) {
+    #memoryGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Sempre 4 colonne su mobile */
+        gap: 0.5rem;
+    }
+
+    .memory-card {
+        width: 100%;
+        height: auto;
+        padding-top: 100%; /* Crea un quadrato perfetto */
+        font-size: 2rem; /* Emoji più grandi */
     }
 }
 
@@ -617,6 +650,26 @@ body {
     .hangman-space {
         width: 15px;
         height: 40px;
+    }
+}
+
+/* --- PER L'IMPICCATO (in CSS.css) --- */
+@media (max-width: 768px) {
+    #hangman-letters {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr); /* 10 colonne per riga */
+        gap: 0.3rem;
+        font-size: 0.9rem; /* Un po' più piccolo ma ancora leggibile */
+    }
+
+    .letter-btn {
+        padding: 0.5rem 0.2rem;
+    }
+
+    /* Rendi il testo della parola più grande */
+    #hangman-word {
+        font-size: 2rem;
+        word-spacing: 0.5em;
     }
 }
 /* ========== BUTTONS ========== */
