@@ -924,3 +924,68 @@ body {
     background: #15803D;
     box-shadow: none;
 }
+
+/* Media Query per dispositivi mobili */
+@media (max-width: 768px) {
+    /* Adatta la navbar */
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .nav-btn {
+        font-size: 1rem;          /* Testo più piccolo */
+        padding: 0.75rem 1rem;    /* Pulsanti più compatti */
+        width: 100%;              /* Ogni pulsante occupa tutta la larghezza */
+    }
+
+    /* Adatta la sezione principale */
+    .hero {
+        padding: 2rem 1rem;       /* Spaziatura interna ridotta */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;        /* Titolo più piccolo */
+    }
+
+    .hero p {
+        font-size: 1.1rem;        /* Testo più leggibile */
+    }
+
+    /* Adatta le card dei giochi nella homepage */
+    .game-cards {
+        grid-template-columns: 1fr; /* Una sola colonna su mobile */
+        gap: 1rem;
+    }
+
+    .game-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .game-card h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Adatta il contenuto delle sezioni dei giochi */
+    .section-content {
+        padding: 1.5rem;
+    }
+
+    /* Adatta il punteggio e il contatore */
+    .game-stats {
+        font-size: 0.9rem;
+        gap: 0.5rem;
+    }
+
+    /* Rendi i bottoni delle azioni più grandi e centrati */
+    .game-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn-reset, .btn-next {
+        width: 80%;
+        max-width: 200px;
+    }
+}
