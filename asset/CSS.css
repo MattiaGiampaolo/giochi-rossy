@@ -485,16 +485,35 @@ body {
         margin: 0 auto !important;
     }
 
-    .memory-card {
+    /* ========== MEMORY GAME - MOBILE FIX ========== */
+@media (max-width: 768px) {
+    /* ... altre regole per header, nav, ecc. ... */
+
+    .memory-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
         width: 100% !important;
-        height: 70px !important;
+        max-width: 400px !important; /* Potresti voler aumentare questo valore per sfruttare meglio lo schermo */
+        margin: 0 auto !important;
+    }
+
+    .memory-card {
+        /* Rimuovi l'altezza fissa */
+        /* height: 70px !important; */
+        width: 100% !important;
+        /* Usa aspect-ratio per creare un quadrato */
+        aspect-ratio: 1 / 1 !important;
+        /* Mantieni il centramento */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         font-size: 2.2rem !important;
         padding: 0 !important;
         margin: 0 !important;
+        /* Assicurati che il bordo rientri nei limiti definiti */
+        box-sizing: border-box !important;
     }
+}
 }
 
 /* Aggiungi una media query per schermi molto piccoli (es. < 480px) */
