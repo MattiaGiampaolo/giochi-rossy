@@ -428,7 +428,7 @@ body {
 /* ========== MEMORY GAME ========== */
 .memory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 0.8rem;
     max-width: 400px;
     margin: 0 auto;
@@ -470,14 +470,15 @@ body {
     transform: scale(0.95);
 }
 
+
 /* ========== MEMORY GAME - MOBILE FIX ========== */
+/* Rimuovi il !important se non è strettamente necessario, per ora lo teniamo per sicurezza */
 @media (max-width: 768px) {
     /* ... altre regole per header, nav, ecc. ... */
 
     /* Forza esplicitamente 4 colonne */
     .memory-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important; /* Usa !important per forzare */
         gap: 0.5rem !important;
         width: 100% !important;
         max-width: 400px !important;
@@ -493,6 +494,32 @@ body {
         font-size: 2.2rem !important;
         padding: 0 !important;
         margin: 0 !important;
+    }
+}
+
+/* Aggiungi una media query per schermi molto piccoli (es. < 480px) */
+@media (max-width: 480px) {
+    .memory-grid {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 colonne su schermi molto piccoli */
+        gap: 0.4rem !important; /* Leggermente meno spazio */
+    }
+    .memory-card {
+        height: 60px !important; /* Leggermente più piccole */
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Aggiungi una media query per schermi desktop grandi */
+@media (min-width: 769px) {
+    .memory-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 colonne fisse su desktop */
+        gap: 0.8rem; /* Usa il gap originale */
+    }
+    .memory-card {
+        /* Puoi rimettere dimensioni fisse se vuoi */
+        width: 80px; /* O rimuovere se usi flexbox per la dimensione */
+        height: 80px;
+        font-size: 2rem;
     }
 }
 
