@@ -469,15 +469,21 @@ body {
     transform: scale(0.95);
 }
 
+/* --- CORREZIONE PER MOBILE: CENTRARE L'EMOJI NEL MEMORY --- */
 @media (max-width: 768px) {
     .memory-card {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .memory-grid {
-        gap: 0.6rem;
+        /* Usa Flexbox per un controllo preciso dell'allineamento */
+        display: flex;
+        align-items: center;     /* Centra verticalmente */
+        justify-content: center; /* Centra orizzontalmente */
+        
+        /* Assicurati che il testo (l'emoji) non si possa selezionare accidentalmente */
+        user-select: none;
+        
+        /* Mantieni le altre proprietà esistenti */
+        width: 50px;      /* Aumenta leggermente se necessario */
+        height: 50px;
+        font-size: 1.8rem; /* Regola la dimensione dell'emoji */
     }
 }
 
