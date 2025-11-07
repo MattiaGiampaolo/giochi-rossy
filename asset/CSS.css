@@ -491,7 +491,7 @@ body {
 /* Schermi molto piccoli */
 @media (max-width: 480px) {
     .memory-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+        grid-template-columns: repeat(4, 1fr); /* 3 colonne */
         gap: 0.4rem;
     }
 
