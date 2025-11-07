@@ -1042,3 +1042,15 @@ body {
         max-width: 200px;
     }
 }
+/* --- CORREZIONI PER MOBILE: PAGINA PRINCIPALE --- */
+@media (max-width: 768px) {
+    /* Seleziona l'iframe del cruciverba tramite il suo ID e cambia l'altezza */
+    #crossword-iframe {
+        height: 600px !important; /* O un valore che ritieni più adatto */
+    }
+
+    /* Facciamo lo stesso per l'iframe del gioco della frase, se esiste */
+    #hangman-iframe {
+        height: 500px !important;
+    }
+}
