@@ -264,37 +264,82 @@ body {
     font-size: 0.95rem;
 }
 
+/* --- CORREZIONI PER MOBILE: CRUCIVERBA --- */
 @media (max-width: 768px) {
+    /* Regole esistenti per la pagina principale */
+    .header {
+        padding: 2rem 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .nav-container {
+        flex-direction: column; /* Navbar verticale */
+        gap: 0.5rem;
+    }
+    
+    .nav-btn {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+        width: 100%;
+    }
+
+    .main-container {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    .game-section {
+        padding: 1.5rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .game-stats {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        gap: 0.5rem;
+    }
+
+    .game-container {
+        padding: 1.5rem;
+    }
+
+    .section-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-card {
+        padding: 1.5rem;
+    }
+
+    /* Cruciverba specifico */
     .crossword-clues {
         grid-template-columns: 1fr;
     }
-}
 
-/* --- CORREZIONI PER MOBILE: CRUCIVERBA --- */
-@media (max-width: 768px) {
-    /* Rende le celle del cruciverba più grandi e toccabili */
     .crossword-cell {
         width: 50px !important;  /* Aumenta la larghezza */
         height: 50px !important; /* Aumenta l'altezza */
         font-size: 2rem !important; /* Aumenta la dimensione del testo */
         margin: 3px !important; /* Aumenta lo spazio tra le celle */
     }
-    /* Opzionale: Se le celle sono in una griglia flessibile, potresti dover forzare il layout */
-    .crossword-grid {
-         /* Se non è già presente, assicurati che la griglia si adatti */
-         display: grid; 
-         gap: 3px; /* Usa lo stesso valore del margin delle celle */
-    }
-}
 
-/* --- CORREZIONI PER MOBILE: LAYOUT CRUCIVERBA --- */
-@media (max-width: 768px) {
-    /* Seleziona il container principale del cruciverba (modifica il nome della classe se diverso) */
-    .crossword-container {
-        flex-direction: column; /* Metti prima le descrizioni, poi il cruciverba sotto */
-    }
-
-    /* Assicurati che la griglia del cruciverba si ridimensioni */
+    /* Correzione layout cruciverba su mobile */
     .crossword-grid {
         width: 100vw; /* Usa quasi tutta la larghezza dello schermo */
         overflow-x: auto; /* Aggiunge scorrimento orizzontale SE necessario */
@@ -302,10 +347,153 @@ body {
         white-space: nowrap; /* Tieni le righe insieme */
     }
 
-    /* Le celle della griglia (aggiornale con la tua classe reale) */
     .crossword-cell {
         display: inline-block; /* Permette lo scorrimento orizzontale */
         white-space: normal; /* Resetta qualsiasi white-space impostato prima */
+    }
+
+    /* True/False specifico */
+    .question-display {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+
+    .true-false-buttons,
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+
+    /* Memory specifico */
+    .memory-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+
+    .memory-card {
+        width: 100%;
+        height: 70px;
+        /* Usa Flexbox per un controllo preciso dell'allineamento */
+        display: flex;
+        align-items: center;     /* Centra verticalmente */
+        justify-content: center; /* Centra orizzontalmente */
+        /* Assicurati che il testo (l'emoji) non si possa selezionare accidentalmente */
+        user-select: none;
+        font-size: 1.8rem; /* Regola la dimensione dell'emoji */
+    }
+
+    /* Hangman specifico */
+    .hangman-letter-box {
+        width: 30px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .hangman-letter {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .hangman-space {
+        width: 15px;
+        height: 40px;
+    }
+
+    /* Aggiunta regole per #hangman-letters e #hangman-word */
+    #hangman-letters {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr); /* 7 colonne per riga */
+        gap: 0.5rem;
+    }
+
+    .hangman-letter {
+        font-size: 1.2rem; /* Aumenta la dimensione del testo */
+        padding: 0.75rem 0; /* Rendi i pulsanti più alti */
+        text-align: center; /* Centra il testo */
+    }
+
+    #hangman-word span {
+        font-size: 2.5rem;
+        margin: 0 0.2em;
+    }
+
+    /* Game Buttons specifico */
+    .game-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn-reset, .btn-next {
+        width: 80%;
+        max-width: 200px;
+    }
+
+    /* Correzione iframe */
+    #crossword-iframe {
+        height: 600px !important;
+    }
+
+    #hangman-iframe {
+        height: 500px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .nav-btn {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .game-section {
+        padding: 1rem;
+    }
+
+    .section-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .game-container {
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .memory-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .memory-card {
+        height: 60px;
+        font-size: 1.3rem;
+    }
+
+    .hangman-display {
+        font-size: 1.5rem;
+    }
+
+    .hangman-letters {
+        gap: 0.3rem;
+    }
+
+    .hangman-letter {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85rem;
+    }
+
+    .crossword-cell {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
 }
 
@@ -469,44 +657,7 @@ body {
     transform: scale(0.95);
 }
 
-/* --- CORREZIONE PER MOBILE: CENTRARE L'EMOJI NEL MEMORY --- */
-@media (max-width: 768px) {
-    .memory-card {
-        /* Usa Flexbox per un controllo preciso dell'allineamento */
-        display: flex;
-        align-items: center;     /* Centra verticalmente */
-        justify-content: center; /* Centra orizzontalmente */
-        
-        /* Assicurati che il testo (l'emoji) non si possa selezionare accidentalmente */
-        user-select: none;
-        
-        /* Mantieni le altre proprietà esistenti */
-        width: 50px;      /* Aumenta leggermente se necessario */
-        height: 50px;
-        font-size: 1.8rem; /* Regola la dimensione dell'emoji */
-    }
-}
-
-/* --- PER IL MEMORY GAME (in CSS.css) --- */
-@media (max-width: 768px) {
-    #memoryGrid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Sempre 4 colonne su mobile */
-        gap: 0.5rem;
-    }
-
-    .memory-card {
-        width: 100%;
-        height: auto;
-        padding-top: 100%; /* Crea un quadrato perfetto */
-        font-size: 2rem; /* Emoji più grandi */
-    }
-}
-
-/* ========== HANGMAN ========== */
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
-
-/* Stile per il contenitore delle lettere della frase */
 /* Stile per il contenitore delle lettere della frase */
 #hangman .hangman-word-container {
     display: flex;
@@ -661,71 +812,6 @@ body {
     transform: translateY(-2px); /* Leggero sollevamento */
 }
 
-/* Responsive per mobile */
-@media (max-width: 768px) {
-    .hangman-letter-box {
-        width: 30px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-
-    .hangman-letter {
-        width: 25px;
-        height: 25px;
-        font-size: 0.8rem;
-    }
-
-    .hangman-space {
-        width: 15px;
-        height: 40px;
-    }
-}
-
-/* --- PER L'IMPICCATO (in CSS.css) --- */
-@media (max-width: 768px) {
-    #hangman-letters {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr); /* 10 colonne per riga */
-        gap: 0.3rem;
-        font-size: 0.9rem; /* Un po' più piccolo ma ancora leggibile */
-    }
-
-    .letter-btn {
-        padding: 0.5rem 0.2rem;
-    }
-
-    /* Rendi il testo della parola più grande */
-    #hangman-word {
-        font-size: 2rem;
-        word-spacing: 0.5em;
-    }
-}
-/* --- CORREZIONI PER MOBILE: INDIVINA LA FRASE --- */
-@media (max-width: 768px) {
-    /* Contenitore dei pulsanti delle lettere */
-    #hangman-letters {
-        /* Cambia da 'display: flex;' a 'display: grid;' */
-        display: grid;
-        /* Organizza in 7 colonne (circa 4 righe per 26 lettere) */
-        grid-template-columns: repeat(7, 1fr);
-        /* Spazio tra i pulsanti */
-        gap: 0.5rem;
-    }
-
-    /* Rendi i pulsanti più grandi */
-    .letter-btn {
-        font-size: 1.2rem;
-        padding: 0.75rem 0;
-        /* Assicurati che il testo sia centrato */
-        text-align: center;
-    }
-
-    /* Rendi la parola da indovinare più grande */
-    #hangman-word span {
-        font-size: 2.5rem;
-        margin: 0 0.2em;
-    }
-}
 /* ========== BUTTONS ========== */
 .game-buttons {
     display: flex;
@@ -785,141 +871,6 @@ body {
     padding: 2rem 1rem;
     margin-top: 3rem;
     border-top: 3px solid #800020;
-}
-
-/* ========== RESPONSIVE DESIGN ========== */
-@media (max-width: 768px) {
-    .header {
-        padding: 2rem 1rem;
-    }
-
-    .title {
-        font-size: 1.8rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    .nav-container {
-        gap: 0.3rem;
-    }
-
-    .nav-btn {
-        padding: 0.5rem 0.9rem;
-        font-size: 0.85rem;
-    }
-
-    .main-container {
-        margin: 1rem auto;
-    }
-
-    .game-section {
-        padding: 1.5rem;
-    }
-
-    .game-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .game-stats {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .game-container {
-        padding: 1.5rem;
-    }
-
-    .section-content h2 {
-        font-size: 1.5rem;
-    }
-
-    .games-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .game-card {
-        padding: 1.5rem;
-    }
-
-    .question-display {
-        font-size: 1.1rem;
-        padding: 1.5rem;
-    }
-
-    .true-false-buttons,
-    .quiz-options {
-        grid-template-columns: 1fr;
-    }
-
-    .memory-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .memory-card {
-        width: 100%;
-        height: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .title {
-        font-size: 1.3rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    .nav-btn {
-        padding: 0.4rem 0.7rem;
-        font-size: 0.75rem;
-    }
-
-    .game-section {
-        padding: 1rem;
-    }
-
-    .section-content h2 {
-        font-size: 1.3rem;
-    }
-
-    .game-container {
-        padding: 1rem;
-        min-height: auto;
-    }
-
-    .memory-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-    }
-
-    .memory-card {
-        height: 60px;
-        font-size: 1.3rem;
-    }
-
-    .hangman-display {
-        font-size: 1.5rem;
-    }
-
-    .hangman-letters {
-        gap: 0.3rem;
-    }
-
-    .hangman-letter {
-        width: 35px;
-        height: 35px;
-        font-size: 0.85rem;
-    }
-
-    .crossword-cell {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-    }
 }
 
 /* ========== ANIMATIONS ========== */
@@ -1030,81 +981,4 @@ body {
 .modal-btn-primary:active {
     background: #15803D;
     box-shadow: none;
-}
-
-/* Media Query per dispositivi mobili */
-@media (max-width: 768px) {
-    /* Adatta la navbar */
-    .nav-container {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .nav-btn {
-        font-size: 1rem;          /* Testo più piccolo */
-        padding: 0.75rem 1rem;    /* Pulsanti più compatti */
-        width: 100%;              /* Ogni pulsante occupa tutta la larghezza */
-    }
-
-    /* Adatta la sezione principale */
-    .hero {
-        padding: 2rem 1rem;       /* Spaziatura interna ridotta */
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;        /* Titolo più piccolo */
-    }
-
-    .hero p {
-        font-size: 1.1rem;        /* Testo più leggibile */
-    }
-
-    /* Adatta le card dei giochi nella homepage */
-    .game-cards {
-        grid-template-columns: 1fr; /* Una sola colonna su mobile */
-        gap: 1rem;
-    }
-
-    .game-card {
-        padding: 1.5rem 1rem;
-    }
-
-    .game-card h3 {
-        font-size: 1.5rem;
-    }
-
-    /* Adatta il contenuto delle sezioni dei giochi */
-    .section-content {
-        padding: 1.5rem;
-    }
-
-    /* Adatta il punteggio e il contatore */
-    .game-stats {
-        font-size: 0.9rem;
-        gap: 0.5rem;
-    }
-
-    /* Rendi i bottoni delle azioni più grandi e centrati */
-    .game-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .btn-reset, .btn-next {
-        width: 80%;
-        max-width: 200px;
-    }
-}
-/* --- CORREZIONI PER MOBILE: PAGINA PRINCIPALE --- */
-@media (max-width: 768px) {
-    /* Seleziona l'iframe del cruciverba tramite il suo ID e cambia l'altezza */
-    #crossword-iframe {
-        height: 600px !important; /* O un valore che ritieni più adatto */
-    }
-
-    /* Facciamo lo stesso per l'iframe del gioco della frase, se esiste */
-    #hangman-iframe {
-        height: 500px !important;
-    }
 }
