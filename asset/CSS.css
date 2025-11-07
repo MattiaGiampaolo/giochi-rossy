@@ -470,29 +470,35 @@ body {
     transform: scale(0.95);
 }
 
-/* --- CORREZIONE PER MOBILE: CENTRARE L'EMOJI NEL MEMORY --- */
+/* ========== MEMORY GAME - MOBILE FIX ========== */
 @media (max-width: 768px) {
+    /* ... altre regole per header, nav, ecc. ... */
+
+    /* Forza esplicitamente 4 colonne */
     .memory-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.5rem;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
     }
 
     .memory-card {
-        width: 100%;
-        height: 70px; /* Altezza fissa */
-        /* Assicurati che il centramento Flexbox funzioni */
-        display: flex !important; /* Forza l'ereditarietà */
+        width: 100% !important;
+        height: 70px !important;
+        display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        /* Aumenta leggermente la dimensione dell'emoji */
         font-size: 2.2rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }
 
-/* ========== HANGMAN ========== */
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
 
-/* Stile per il contenitore delle lettere della frase */
+
 /* Stile per il contenitore delle lettere della frase */
 #hangman .hangman-word-container {
     display: flex;
