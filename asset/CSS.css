@@ -484,7 +484,7 @@ body {
     }
 
     .memory-card {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 }
 
@@ -496,19 +496,19 @@ body {
     }
 
     .memory-card {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 }
 
 /* Schermi ultra-piccoli */
 @media (max-width: 360px) {
     .memory-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonne */
+        grid-template-columns: repeat(4, 1fr); /* 2 colonne */
         gap: 0.3rem;
     }
 
     .memory-card {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
