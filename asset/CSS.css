@@ -425,32 +425,44 @@ body {
 }
 
 /* ========== MEMORY GAME ========== */
+/* ========== MEMORY GAME ========== */
 .memory-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colonne fisse su desktop */
-    gap: 0.8rem;
-    max-width: 400px; /* Massima larghezza del contenitore */
-    width: 100%; /* Occupa tutta la larghezza disponibile, ma non oltre max-width */
+    /* Imposta 4 colonne fisse per tutti i dispositivi */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem; /* Gap originale per desktop */
+    /* max-width leggermente più grande per sfruttare meglio lo spazio su mobile */
+    max-width: 400px; /* Puoi anche usare min(400px, 100vw - 2rem) se preferisci */
+    width: 100%;
     margin: 0 auto;
-    padding: 1rem; /* Aggiungi un po’ di spazio intorno al grid */
-    box-sizing: border-box; /* Include padding e border nella larghezza */
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .memory-card {
-    aspect-ratio: 1 / 1; /* Quadrato perfetto */
-    width: 100%; /* Ogni carta occupa tutta la larghezza della cella */
+    /* Assicura il quadrato perfetto */
+    aspect-ratio: 1 / 1;
+    /* Occupa tutta la larghezza della cella del grid */
+    width: 100%;
+    /* Rimuovi qualsiasi altezza fissa */
+    /* height: 70px; <-- Se presente, rimuovila */
+
     background: linear-gradient(135deg, #800020 0%, #a8324a 100%);
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 2rem;
+    /* Font-size iniziale */
+    font-size: 2rem; /* Questo verrà scalato su mobile */
+    /* Centra l'emoji */
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
     color: transparent;
-    box-sizing: border-box; /* Assicura che padding non aumenti la dimensione */
+    box-sizing: border-box;
+    /* Evita la selezione accidentale dell'emoji */
+    user-select: none;
 }
 
 /* Effetti visivi */
@@ -474,41 +486,48 @@ body {
     transform: scale(0.95);
 }
 
-/* ========== MEMORY GAME - MOBILE FIX ========== */
+/* ========== MEMORY GAME - ADATTAMENTO MOBILE ========== */
 @media (max-width: 768px) {
     .memory-grid {
+        /* Conferma 4 colonne fisse su mobile */
         grid-template-columns: repeat(4, 1fr);
+        /* Riduci leggermente il gap per adattarlo meglio */
         gap: 0.5rem;
-        max-width: 100%; /* Rimuovi il limite di 400px su mobile per sfruttare meglio lo spazio */
+        /* Aumenta leggermente la larghezza massima o usa la larghezza dello schermo meno un margine */
+        max-width: min(400px, 100vw - 2rem); /* Questo rende il gioco leggermente più largo su mobile */
         padding: 0.8rem;
     }
 
+    /* Nessuna altezza fissa impostata qui. aspect-ratio gestisce altezza e larghezza. */
     .memory-card {
-        font-size: 2rem;
+        /* L'aspetto del quadrato è gestito da aspect-ratio e width: 100% */
+        /* Centratura già impostata */
+        /* display: flex, align-items, justify-content */
+        /* Riduci la dimensione del font per adattarsi ai quadrati più piccoli su mobile */
+        font-size: 1.8rem; /* Regola questo valore in base all'aspetto finale */
     }
 }
 
 /* Schermi molto piccoli */
 @media (max-width: 480px) {
     .memory-grid {
-        grid-template-columns: repeat(4, 1fr); /* 3 colonne */
-        gap: 0.4rem;
+        gap: 0.4rem; /* Riduci ulteriormente il gap */
+        max-width: min(380px, 100vw - 1.5rem); /* Leggero aggiustamento */
     }
 
     .memory-card {
-        font-size: 1.6rem;
+        font-size: 1.5rem; /* Riduci ulteriormente il font su schermi molto piccoli */
     }
 }
 
 /* Schermi ultra-piccoli */
 @media (max-width: 360px) {
     .memory-grid {
-        grid-template-columns: repeat(4, 1fr); /* 2 colonne */
-        gap: 0.3rem;
+        gap: 0.3rem; /* Riduci ancora il gap */
     }
 
     .memory-card {
-        font-size: 1.4rem;
+        font-size: 1.3rem; /* Riduci ulteriormente */
     }
 }
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
