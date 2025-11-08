@@ -427,34 +427,25 @@ body {
 /* ========== MEMORY GAME ========== */
 .memory-grid {
     display: grid;
-    /* Mantieni 4 colonne fisse per tutti i dispositivi */
-    grid-template-columns: repeat(4, 1fr);
-    /* Usa un gap leggermente più piccolo per guadagnare spazio */
-    gap: 0.5rem; /* Era 0.8rem */
-    /* Usa una larghezza massima che si adatti bene a mobile e desktop */
-    max-width: min(400px, 100vw - 2rem); /* Scegli la larghezza minore tra 400px e la larghezza dello schermo meno un margine */
+    /* Forza 4 colonne fisse su tutti i dispositivi */
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.5rem; /* Usa subito il gap ridotto */
+    max-width: min(400px, 100vw - 2rem);
     width: 100%;
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
-    /* Evita overflow se per caso qualcosa sporge */
     overflow: hidden;
 }
 
 .memory-card {
-    /* Usa aspect-ratio per garantire il quadrato perfetto */
     aspect-ratio: 1 / 1;
-    /* La larghezza è determinata automaticamente dal grid */
     width: 100%;
-    /* Rimuovi qualsiasi altezza fissa */
-
     background: linear-gradient(135deg, #800020 0%, #a8324a 100%);
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    /* Font-size iniziale per desktop */
     font-size: 2rem;
-    /* Centra l'emoji usando flexbox */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,7 +453,6 @@ body {
     box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
     color: transparent;
     box-sizing: border-box;
-    /* Evita la selezione accidentale dell'emoji */
     user-select: none;
 }
 
@@ -484,53 +474,40 @@ body {
 }
 
 .memory-card:active {
-    transform: scale(0.98); /* Leggero effetto di pressione */
+    transform: scale(0.98);
 }
 
 /* ========== MEMORY GAME - ADATTAMENTO MOBILE ========== */
+/* Le media query per mobile non hanno bisogno di !important se la regola iniziale usa !important */
 @media (max-width: 768px) {
     .memory-grid {
-        /* Conferma 4 colonne fisse su mobile */
-        grid-template-columns: repeat(4, 1fr);
-        /* Mantieni il gap ridotto */
-        gap: 0.4rem; /* Leggermente più piccolo */
-        /* Ottimizza la larghezza massima per mobile */
-        max-width: min(380px, 100vw - 1.5rem); /* Ancora più vicino ai bordi */
-        padding: 0.8rem;
+        /* max-width e gap già impostati sopra */
     }
 
-    /* Nessuna altezza fissa impostata qui. aspect-ratio gestisce altezza e larghezza. */
     .memory-card {
-        /* L'aspetto del quadrato è gestito da aspect-ratio e width: 100% */
-        /* Centratura già impostata */
-        /* display: flex, align-items, justify-content */
-        /* Riduci la dimensione del font per adattarsi meglio ai quadrati più piccoli su mobile */
-        font-size: 1.6rem; /* Era 1.8rem, ora leggermente più piccolo */
+        font-size: 1.6rem;
     }
 }
 
 /* Schermi molto piccoli */
 @media (max-width: 480px) {
     .memory-grid {
-        gap: 0.3rem; /* Riduci ulteriormente il gap */
-        max-width: min(360px, 100vw - 1rem); /* Ancora più vicino ai bordi */
+        /* max-width già impostato sopra */
     }
 
     .memory-card {
-        font-size: 1.4rem; /* Riduci ulteriormente il font */
+        font-size: 1.4rem;
     }
 }
 
 /* Schermi ultra-piccoli */
 @media (max-width: 360px) {
     .memory-grid {
-        gap: 0.25rem; /* Riduci ancora il gap */
-        max-width: 100vw; /* Usa tutta la larghezza */
-        padding: 0.5rem;
+        /* max-width già impostato sopra */
     }
 
     .memory-card {
-        font-size: 1.2rem; /* Riduci ulteriormente */
+        font-size: 1.2rem;
     }
 }
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
