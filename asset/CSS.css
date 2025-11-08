@@ -425,11 +425,13 @@ body {
 }
 
 /* ========== MEMORY GAME ========== */
-.memory-grid {
+/* ========== MEMORY GAME ========== */
+/* Applica la regola 4x4 a tutti i dispositivi, ma con possibilità di essere sovrascritta da media queries specifiche */
+.memory-grid,
+#memoryGrid { /* Aggiungi anche l'ID per sicurezza */
     display: grid;
-    /* Forza 4 colonne fisse su tutti i dispositivi */
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 0.5rem; /* Usa subito il gap ridotto */
+    grid-template-columns: repeat(4, 1fr) !important; /* FORZA 4 colonne */
+    gap: 0.5rem;
     max-width: min(400px, 100vw - 2rem);
     width: 100%;
     margin: 0 auto;
@@ -478,36 +480,44 @@ body {
 }
 
 /* ========== MEMORY GAME - ADATTAMENTO MOBILE ========== */
-/* Le media query per mobile non hanno bisogno di !important se la regola iniziale usa !important */
+/* Le media query non hanno bisogno di ridefinire grid-template-columns se è già imposto sopra con !important */
 @media (max-width: 768px) {
-    .memory-grid {
-        /* max-width e gap già impostati sopra */
+    .memory-grid,
+    #memoryGrid {
+        gap: 0.4rem !important; /* Aggiorna anche gap se necessario */
+        max-width: min(380px, 100vw - 1.5rem) !important;
+        padding: 0.8rem !important;
     }
 
     .memory-card {
-        font-size: 1.6rem;
+        font-size: 1.6rem !important; /* Assicura riduzione font su mobile */
     }
 }
 
 /* Schermi molto piccoli */
 @media (max-width: 480px) {
-    .memory-grid {
-        /* max-width già impostato sopra */
+    .memory-grid,
+    #memoryGrid {
+        gap: 0.3rem !important;
+        max-width: min(360px, 100vw - 1rem) !important;
     }
 
     .memory-card {
-        font-size: 1.4rem;
+        font-size: 1.4rem !important;
     }
 }
 
 /* Schermi ultra-piccoli */
 @media (max-width: 360px) {
-    .memory-grid {
-        /* max-width già impostato sopra */
+    .memory-grid,
+    #memoryGrid {
+        gap: 0.25rem !important;
+        max-width: 100vw !important;
+        padding: 0.5rem !important;
     }
 
     .memory-card {
-        font-size: 1.2rem;
+        font-size: 1.2rem !important;
     }
 }
 /* ========== HANGMAN - INDOVINA LA FRASE ========== */
